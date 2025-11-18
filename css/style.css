@@ -12,6 +12,11 @@
 /* Basic                                                                         */
 /*********************************************************************************/
 
+	html
+	{
+		scroll-behavior: smooth;
+	}
+
 	body
 	{
 		background: #202020 url(images/img01.jpg) repeat;
@@ -783,10 +788,40 @@
 	
 		#logo a
 		{
-			display: block;
+			display: flex;
+			align-items: center;
+			gap: 0.65em;
 			text-decoration: none;
-			font-size: 2.8em;
+			font-size: 2.2em;
 			font-weight: 600;
+		}
+
+		#logo img
+		{
+			height: 60px;
+			width: 60px;
+			border-radius: 50%;
+			border: 3px solid #fff;
+			box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+			object-fit: cover;
+			background: #fff;
+		}
+
+		#logo .logotype
+		{
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			color: #333;
+		}
+
+		#logo .tagline
+		{
+			display: block;
+			margin-top: 0.8em;
+			font-size: 1em;
+			letter-spacing: 0.15em;
+			text-transform: uppercase;
+			color: rgba(0,0,0,0.5);
 		}
 
 /*********************************************************************************/
@@ -844,9 +879,40 @@
 	{
 		position: relative;
 		padding: 12em 0em;
-		background: url(../images/banner.jpg) no-repeat center;
+		background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(../images/lab-banner.jpg) no-repeat center;
 		background-size: cover;
 		color: #fff;
+	}
+
+	.page-banner
+	{
+		padding: 6em 0;
+		background: linear-gradient(120deg, rgba(28,24,31,0.85), rgba(136,85,103,0.65));
+		text-align: left;
+	}
+
+		.page-banner h1
+		{
+			font-size: 3em;
+			margin: 0.2em 0 0.4em;
+		}
+
+		.page-banner p
+		{
+			font-size: 1.2em;
+			line-height: 1.6;
+			margin-bottom: 0;
+			color: rgba(255,255,255,0.85);
+		}
+
+	.protocols-banner
+	{
+		background: linear-gradient(120deg, rgba(13,29,36,0.82), rgba(81,28,54,0.78)), url(../images/lab-banner.jpg) center/cover;
+	}
+
+	.background-banner
+	{
+		background: linear-gradient(120deg, rgba(60,14,31,0.85), rgba(139,77,44,0.7)), url(../images/lab-banner.jpg) center/cover;
 	}
 
 /*********************************************************************************/
@@ -981,3 +1047,169 @@
 		color: #333 !important;
 	}
 
+/*********************************************************************************/
+/* Protocols                                                                     */
+/*********************************************************************************/
+
+	.card
+	{
+		background: #fff;
+		border: 1px solid rgba(0,0,0,0.08);
+		border-radius: 10px;
+		padding: 1.5em;
+		box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+	}
+
+	.protocol-search
+	{
+		margin-bottom: 3em;
+	}
+
+		.protocol-search input
+		{
+			width: 100%;
+			padding: 0.9em 1.2em;
+			border-radius: 999px;
+			border: 1px solid rgba(0,0,0,0.2);
+			font-size: 1em;
+			letter-spacing: 0.05em;
+		}
+
+	.protocol-grid
+	{
+		display: flex;
+		flex-wrap: wrap;
+		margin-left: -20px;
+	}
+
+		.protocol-grid > *
+		{
+			width: 25%;
+			padding-left: 20px;
+			margin-bottom: 20px;
+		}
+
+	@media screen and (max-width: 1000px)
+	{
+		.protocol-grid > *
+		{
+			width: 50%;
+		}
+	}
+
+	@media screen and (max-width: 640px)
+	{
+		.protocol-grid > *
+		{
+			width: 100%;
+		}
+	}
+
+	.button.button-arrow
+	{
+		padding-right: 2.5em;
+		position: relative;
+	}
+
+		.button.button-arrow:after
+		{
+			content: '';
+			position: absolute;
+			right: 1em;
+			top: 50%;
+			width: 0.6em;
+			height: 0.6em;
+			border-top: 2px solid #fff;
+			border-right: 2px solid #fff;
+			transform: translateY(-50%) rotate(45deg);
+		}
+
+	.protocol-card
+	{
+		min-height: 100%;
+		text-align: left;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.protocol-thumb
+	{
+		width: 100%;
+		border-radius: 8px;
+		margin-bottom: 1em;
+	}
+
+	.protocol-meta
+	{
+		margin-top: auto;
+		font-size: 0.9em;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: rgba(0,0,0,0.5);
+		margin-bottom: 1em;
+	}
+
+	.protocol-empty-state
+	{
+		display: none;
+		text-align: center;
+		padding: 1.8em;
+		border-radius: 12px;
+		border: 1px dashed #e95d3c;
+		color: #333;
+	}
+
+	.is-hidden
+	{
+		display: none !important;
+	}
+
+/*********************************************************************************/
+/* Background navigation                                                         */
+/*********************************************************************************/
+
+	.row.background-layout
+	{
+		display: flex;
+		align-items: stretch;
+	}
+
+		.row.background-layout > *
+		{
+			float: none;
+		}
+
+	.background-nav-column
+	{
+		position: relative;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.background-nav
+	{
+		position: -webkit-sticky;
+		position: sticky;
+		top: 6em;
+	}
+
+		.background-nav .sidebar
+		{
+			margin-bottom: 1.2em;
+			padding: 1em 1.1em;
+			border-radius: 10px;
+			background: #fff;
+			box-shadow: none;
+			border: none;
+		}
+
+	.anchor-list li
+	{
+		margin-bottom: 0.4em;
+	}
+
+		.anchor-list li.subnav
+		{
+			padding-left: 1.2em;
+			font-size: 0.95em;
+		}

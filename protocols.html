@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Moatti Lab | Protocol Library</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="Interactive protocol index for the Moatti Lab" />
+		<meta name="keywords" content="Moatti Lab, protocols, pigs" />
+		<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:700italic,400,300,700' rel='stylesheet' type='text/css'>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-panels.min.js"></script>
+		<script src="js/init.js"></script>
+		<script src="js/protocols.js" defer></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel-noscript.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+	</head>
+	<body class="no-sidebar">
+
+	<!-- Header -->
+		<div id="header">
+			<div class="container">
+				<div id="logo">
+					<h1>
+						<a href="index.html">
+							<img src="images/lab-logo.jpeg" alt="Moatti Lab logo">
+							<span class="logotype">Moatti Lab Hub</span>
+						</a>
+					</h1>
+					<span class="tagline">Pig-focused translational research</span>
+				</div>
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li class="active"><a href="protocols.html">Protocols</a></li>
+						<li><a href="background.html">Background</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	<!-- /Header -->
+
+	<!-- Banner -->
+		<div id="banner" class="page-banner protocols-banner">
+			<div class="container">
+				<div class="banner-content simple">
+					<h1>Protocol Library</h1>
+					<p>Search SOPs, assays, and instrumentation guides curated for our pig translational workflows.</p>
+				</div>
+			</div>
+		</div>
+	<!-- /Banner -->
+
+	<!-- Main -->
+		<div id="page">
+			<div id="main" class="container">
+				<section class="protocol-search">
+					<header>
+						<h2>Find a protocol</h2>
+						<span class="byline">Filter by title, assay, tissue, or reagent</span>
+					</header>
+					<input type="search" id="protocol-search" placeholder="Type to search" aria-label="Search protocols">
+				</section>
+
+				<div class="row protocol-grid">
+					<div class="3u">
+						<section class="card protocol-card" data-search="tissue dissociation scRNA necropsy">
+							<img class="protocol-thumb" src="images/pics04.jpg" alt="Pig tissue dissociation setup">
+							<h3>Pig tissue dissociation</h3>
+							<p>Cold-chain workflow for freeing viable immune and epithelial cells for single-cell assays.</p>
+							<p class="protocol-meta"><strong>Updated:</strong> Apr 12 2024</p>
+							<a href="#" class="button button-arrow">Open protocol</a>
+						</section>
+					</div>
+					<div class="3u">
+						<section class="card protocol-card" data-search="viral load qpcr serum bal prrs">
+							<img class="protocol-thumb" src="images/pics05.jpg" alt="qPCR setup">
+							<h3>Viral load qPCR</h3>
+							<p>PRRS and influenza qPCR workflow including extraction guidance for serum and BAL fluid.</p>
+							<p class="protocol-meta"><strong>Updated:</strong> Jan 30 2024</p>
+							<a href="#" class="button button-arrow">Open protocol</a>
+						</section>
+					</div>
+					<div class="3u">
+						<section class="card protocol-card" data-search="oct imaging airway anesthesia">
+							<img class="protocol-thumb" src="images/pics06.jpg" alt="OCT imaging">
+							<h3>In vivo OCT imaging</h3>
+							<p>Catheter-based airway imaging with anesthesia checklist and export presets.</p>
+							<p class="protocol-meta"><strong>Updated:</strong> Jul 18 2023</p>
+							<a href="#" class="button button-arrow">Open protocol</a>
+						</section>
+					</div>
+					<div class="3u">
+						<section class="card protocol-card" data-search="surgery prep recovery central line">
+							<img class="protocol-thumb" src="images/pics07.jpg" alt="Surgery prep">
+							<h3>Surgical prep &amp; recovery</h3>
+							<p>Checklist for fasting, line placement, intra-op monitoring, and recovery scoring.</p>
+							<p class="protocol-meta"><strong>Updated:</strong> Feb 20 2024</p>
+							<a href="#" class="button button-arrow">Open protocol</a>
+						</section>
+					</div>
+					<div class="3u">
+						<section class="card protocol-card" data-search="spatial transcriptomics visium kidney">
+							<img class="protocol-thumb" src="images/pics08.jpg" alt="Spatial transcriptomics slide">
+							<h3>Spatial transcriptomics</h3>
+							<p>Visium slide handling, permeabilization timing, and sequencing depth calculator.</p>
+							<p class="protocol-meta"><strong>Updated:</strong> May 08 2024</p>
+							<a href="#" class="button button-arrow">Open protocol</a>
+						</section>
+					</div>
+					<div class="3u">
+						<section class="card protocol-card" data-search="pbmc isolation cryopreservation">
+							<img class="protocol-thumb" src="images/pics09.jpg" alt="PBMC isolation">
+							<h3>PBMC isolation &amp; cryo</h3>
+							<p>Ficoll gradient scaling for pig blood plus slow-freeze instructions.</p>
+							<p class="protocol-meta"><strong>Updated:</strong> Mar 14 2024</p>
+							<a href="#" class="button button-arrow">Open protocol</a>
+						</section>
+					</div>
+				</div>
+
+				<div class="protocol-empty-state">
+					<p>No protocols match that search yet. Let ops know so we can add it.</p>
+				</div>
+			</div>
+		</div>
+	<!-- /Main -->
+
+	<!-- Footer -->
+		<div id="footer">
+			<div class="container">
+				<div class="row">
+					<div class="6u">
+						<section>
+							<h2>Need something?</h2>
+							<p>Email <a href="mailto:ops@moattilab.edu">ops@moattilab.edu</a> or drop a note in #lab-operations.</p>
+						</section>
+					</div>
+					<div class="6u">
+						<section>
+							<h2>Protocol suggestions</h2>
+							<p>Missing documentation? Add it to the Airtable backlog and tag the owner.</p>
+						</section>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- /Footer -->
+
+	<!-- Copyright -->
+		<div id="copyright" class="container">
+			Maintained by the Moatti Lab &bull; Images: Unsplash (CC0)
+		</div>
+
+	</body>
+</html>
