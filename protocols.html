@@ -11,6 +11,13 @@
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-panels.min.js"></script>
 		<script src="js/init.js"></script>
+		<script>
+			window.PROTOCOL_SHEET = {
+				sheetId: '1OfZPbsPn-t1ugxQ8M39vO676pUPV-25SFXd6Ztz2RFg',
+				gid: '0',
+				sheetName: 'Sheet1'
+			};
+		</script>
 		<script src="js/protocols.js" defer></script>
 		<noscript>
 			<link rel="stylesheet" href="css/skel-noscript.css" />
@@ -32,7 +39,6 @@
 							<span class="logotype">Moatti Lab Hub</span>
 						</a>
 					</h1>
-					<span class="tagline">Pig-focused translational research</span>
 				</div>
 				<nav id="nav">
 					<ul>
@@ -62,67 +68,16 @@
 				<section class="protocol-search">
 					<header>
 						<h2>Find a protocol</h2>
-						<span class="byline">Filter by title, assay, tissue, or reagent</span>
+						<span class="byline">
+							<a class="protocol-folder-link" href="https://drive.google.com/drive/folders/1qNkro7g8M9pBpnK6i3KtEL2HssazRphg?usp=sharing" target="_blank" rel="noopener">
+								Add or update protocols in Google Drive
+							</a>
+						</span>
 					</header>
 					<input type="search" id="protocol-search" placeholder="Type to search" aria-label="Search protocols">
 				</section>
 
-				<div class="row protocol-grid">
-					<div class="3u">
-						<section class="card protocol-card" data-search="tissue dissociation scRNA necropsy">
-							<img class="protocol-thumb" src="images/pics04.jpg" alt="Pig tissue dissociation setup">
-							<h3>Pig tissue dissociation</h3>
-							<p>Cold-chain workflow for freeing viable immune and epithelial cells for single-cell assays.</p>
-							<p class="protocol-meta"><strong>Updated:</strong> Apr 12 2024</p>
-							<a href="#" class="button button-arrow">Open protocol</a>
-						</section>
-					</div>
-					<div class="3u">
-						<section class="card protocol-card" data-search="viral load qpcr serum bal prrs">
-							<img class="protocol-thumb" src="images/pics05.jpg" alt="qPCR setup">
-							<h3>Viral load qPCR</h3>
-							<p>PRRS and influenza qPCR workflow including extraction guidance for serum and BAL fluid.</p>
-							<p class="protocol-meta"><strong>Updated:</strong> Jan 30 2024</p>
-							<a href="#" class="button button-arrow">Open protocol</a>
-						</section>
-					</div>
-					<div class="3u">
-						<section class="card protocol-card" data-search="oct imaging airway anesthesia">
-							<img class="protocol-thumb" src="images/pics06.jpg" alt="OCT imaging">
-							<h3>In vivo OCT imaging</h3>
-							<p>Catheter-based airway imaging with anesthesia checklist and export presets.</p>
-							<p class="protocol-meta"><strong>Updated:</strong> Jul 18 2023</p>
-							<a href="#" class="button button-arrow">Open protocol</a>
-						</section>
-					</div>
-					<div class="3u">
-						<section class="card protocol-card" data-search="surgery prep recovery central line">
-							<img class="protocol-thumb" src="images/pics07.jpg" alt="Surgery prep">
-							<h3>Surgical prep &amp; recovery</h3>
-							<p>Checklist for fasting, line placement, intra-op monitoring, and recovery scoring.</p>
-							<p class="protocol-meta"><strong>Updated:</strong> Feb 20 2024</p>
-							<a href="#" class="button button-arrow">Open protocol</a>
-						</section>
-					</div>
-					<div class="3u">
-						<section class="card protocol-card" data-search="spatial transcriptomics visium kidney">
-							<img class="protocol-thumb" src="images/pics08.jpg" alt="Spatial transcriptomics slide">
-							<h3>Spatial transcriptomics</h3>
-							<p>Visium slide handling, permeabilization timing, and sequencing depth calculator.</p>
-							<p class="protocol-meta"><strong>Updated:</strong> May 08 2024</p>
-							<a href="#" class="button button-arrow">Open protocol</a>
-						</section>
-					</div>
-					<div class="3u">
-						<section class="card protocol-card" data-search="pbmc isolation cryopreservation">
-							<img class="protocol-thumb" src="images/pics09.jpg" alt="PBMC isolation">
-							<h3>PBMC isolation &amp; cryo</h3>
-							<p>Ficoll gradient scaling for pig blood plus slow-freeze instructions.</p>
-							<p class="protocol-meta"><strong>Updated:</strong> Mar 14 2024</p>
-							<a href="#" class="button button-arrow">Open protocol</a>
-						</section>
-					</div>
-				</div>
+				<div id="protocol-grid" class="row protocol-grid"></div>
 
 				<div class="protocol-empty-state">
 					<p>No protocols match that search yet. Let ops know so we can add it.</p>
@@ -132,30 +87,52 @@
 	<!-- /Main -->
 
 	<!-- Footer -->
-		<div id="footer">
+		<footer id="footer">
 			<div class="container">
-				<div class="row">
-					<div class="6u">
-						<section>
-							<h2>Need something?</h2>
-							<p>Email <a href="mailto:ops@moattilab.edu">ops@moattilab.edu</a> or drop a note in #lab-operations.</p>
-						</section>
-					</div>
-					<div class="6u">
-						<section>
-							<h2>Protocol suggestions</h2>
-							<p>Missing documentation? Add it to the Airtable backlog and tag the owner.</p>
-						</section>
-					</div>
+				<div class="footer-columns">
+					<section class="footer-column">
+						<h2>Moatti Lab</h2>
+						<p>Eye &amp; Ear Institute<br>203 Lothrop Avenue, Fl 10<br>Pittsburgh, PA 15213</p>
+						<ul class="social-list">
+							<li><a href="#" aria-label="Instagram">
+								<svg viewBox="0 0 24 24" aria-hidden="true">
+									<rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/>
+									<circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/>
+									<circle cx="18" cy="6" r="1.2" fill="currentColor"/>
+								</svg>
+							</a></li>
+							<li><a href="#" aria-label="Twitter">
+								<svg viewBox="0 0 24 24" aria-hidden="true">
+									<path fill="currentColor" d="M21 5.5c-.7.3-1.5.5-2.2.6a3.5 3.5 0 0 0 1.5-2 6.6 6.6 0 0 1-2.3.9 3.4 3.4 0 0 0-5.9 3c-2.7-.1-5.2-1.4-6.8-3.5a3.4 3.4 0 0 0 1 4.5c-.6 0-1.1-.2-1.6-.4v.1a3.4 3.4 0 0 0 2.7 3.4c-.3.1-.7.1-1.1.1-.2 0-.5 0-.7-.1a3.4 3.4 0 0 0 3.2 2.4A6.9 6.9 0 0 1 3 17.8a9.7 9.7 0 0 0 5.3 1.6c6.4 0 9.9-5.3 9.9-9.9v-.4A7 7 0 0 0 21 5.5z"/>
+								</svg>
+							</a></li>
+							<li><a href="#" aria-label="LinkedIn">
+								<svg viewBox="0 0 24 24" aria-hidden="true">
+									<path fill="currentColor" d="M4.98 3.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM3 8.75h3.9V20H3zM9.5 8.75H13v1.53h.05c.5-.9 1.7-1.84 3.5-1.84 3.7 0 4.4 2.2 4.4 5.1V20h-3.9v-5.2c0-1.2 0-2.8-1.8-2.8s-2.1 1.3-2.1 2.7V20H9.5z"/>
+								</svg>
+							</a></li>
+						</ul>
+					</section>
+					<section class="footer-column">
+						<h2>Affiliations</h2>
+						<ul class="link-list">
+							<li><a href="#">University of Pittsburgh</a></li>
+							<li><a href="#">School of Medicine, Pitt</a></li>
+							<li><a href="#">Eye &amp; Ear Foundation</a></li>
+							<li><a href="#">Pittsburgh Hearing Research Center</a></li>
+							<li><a href="#">Dept. of Otolaryngology</a></li>
+						</ul>
+					</section>
+					<section class="footer-column">
+						<h2>Attributions</h2>
+						<p>Design by <a href="http://templated.co">TEMPLATED</a><br>
+						Images from <a href="http://unsplash.com">Unsplash</a> (CC0)</p>
+						<p>Maintained by the Moatti Lab · <a href="mailto:ops@moattilab.edu">ops@moattilab.edu</a></p>
+					</section>
 				</div>
 			</div>
-		</div>
+		</footer>
 	<!-- /Footer -->
-
-	<!-- Copyright -->
-		<div id="copyright" class="container">
-			Maintained by the Moatti Lab &bull; Images: Unsplash (CC0)
-		</div>
 
 	</body>
 </html>
