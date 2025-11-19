@@ -1576,6 +1576,13 @@
 		display: none;
 	}
 
+	.page-banner .communication-doc-link
+	{
+		color: #fff;
+		text-decoration: underline;
+		font-weight: 600;
+	}
+
 /*********************************************************************************/
 /* Background dynamic                                                            */
 /*********************************************************************************/
@@ -1626,6 +1633,13 @@
 	{
 		font-size: 1.05em;
 		line-height: 1.85em;
+	}
+
+	.page-banner .background-doc-link
+	{
+		color: #fff;
+		text-decoration: underline;
+		font-weight: 600;
 	}
 
 /*********************************************************************************/
