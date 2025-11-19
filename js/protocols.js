@@ -27,15 +27,12 @@
   }
 
   function buildSearchString(item) {
-    return [item.title, item.summary, item.category, item.tags]
-      .filter(Boolean)
-      .join(' ')
-      .toLowerCase();
+    return (item.title || '').toLowerCase();
   }
 
   function createCard(item) {
     var column = document.createElement('div');
-    column.className = '3u';
+    column.className = 'protocol-grid-item';
 
     var section = document.createElement('section');
     section.className = 'card protocol-card';
@@ -64,6 +61,10 @@
     var button = document.createElement('a');
     button.className = 'button button-arrow';
     button.href = item.link || '#';
+    if (item.link && item.link !== '#') {
+      button.target = '_blank';
+      button.rel = 'noopener';
+    }
     button.textContent = 'Open protocol';
     section.appendChild(button);
 
@@ -88,15 +89,32 @@
       }
       return;
     }
-    var visible = 0;
+    var matches = [];
+    var nonMatches = [];
     cards.forEach(function (card) {
       var haystack = (card.getAttribute('data-search') || '').toLowerCase();
-      var matches = !query || haystack.indexOf(query) !== -1;
-      card.classList.toggle('is-hidden', !matches);
-      if (matches) {
-        visible += 1;
+      var isMatch = !query || haystack.indexOf(query) !== -1;
+      if (query) {
+        card.classList.toggle('is-hidden', !isMatch);
+      } else {
+        card.classList.remove('is-hidden');
+      }
+      if (isMatch) {
+        matches.push(card);
+      } else {
+        nonMatches.push(card);
       }
     });
+    var ordered = query ? matches.concat(nonMatches) : cards.slice();
+    var fragment = document.createDocumentFragment();
+    ordered.forEach(function (card) {
+      var wrapper = card.parentElement;
+      if (wrapper) {
+        fragment.appendChild(wrapper);
+      }
+    });
+    grid.appendChild(fragment);
+    var visible = query ? matches.length : cards.length;
     if (emptyState) {
       emptyState.style.display = visible ? 'none' : 'block';
     }
@@ -123,6 +141,24 @@
     };
   }
 
+  var DRIVE_IMAGE_BASE = 'https://lh3.googleusercontent.com/d/';
+  var DRIVE_IMAGE_SIZE_PARAM = '=s1200';
+
+  function extractDriveId(url) {
+    if (!url) {
+      return null;
+    }
+    var directMatch = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+    if (directMatch && directMatch[1]) {
+      return directMatch[1];
+    }
+    var idMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+    if (idMatch && idMatch[1]) {
+      return idMatch[1];
+    }
+    return null;
+  }
+
   function normalizeImageUrl(value) {
     if (!value) {
       return DEFAULT_IMAGE;
@@ -131,15 +167,56 @@
     if (!trimmed) {
       return DEFAULT_IMAGE;
     }
-    var directMatch = trimmed.match(/\/d\/([a-zA-Z0-9_-]+)(?:\/|$)/);
-    if (directMatch && directMatch[1]) {
-      return 'https://drive.google.com/uc?export=view&id=' + directMatch[1];
+    if (/^https?:\/\/lh3\.googleusercontent\.com\/d\//i.test(trimmed)) {
+      return trimmed;
     }
-    var idMatch = trimmed.match(/[?&]id=([a-zA-Z0-9_-]+)/);
-    if (idMatch && idMatch[1]) {
-      return 'https://drive.google.com/uc?export=view&id=' + idMatch[1];
+    var driveId = extractDriveId(trimmed);
+    if (driveId) {
+      return DRIVE_IMAGE_BASE + driveId + DRIVE_IMAGE_SIZE_PARAM;
     }
     return trimmed;
+  }
+
+  function parseGVizDateString(value) {
+    if (typeof value !== 'string') {
+      return null;
+    }
+    var match = value.match(/^Date\((\d+),(\d+),(\d+)(?:,(\d+),(\d+),(\d+))?\)$/);
+    if (!match) {
+      return null;
+    }
+    var year = parseInt(match[1], 10);
+    var month = parseInt(match[2], 10);
+    var day = parseInt(match[3], 10);
+    var hour = match[4] ? parseInt(match[4], 10) : 0;
+    var minute = match[5] ? parseInt(match[5], 10) : 0;
+    var second = match[6] ? parseInt(match[6], 10) : 0;
+    var parsed = new Date(year, month, day, hour, minute, second);
+    if (isNaN(parsed.getTime())) {
+      return null;
+    }
+    return parsed;
+  }
+
+  function normalizeCellValue(cell) {
+    if (!cell) {
+      return '';
+    }
+    var value = cell.v;
+    if (value !== undefined && value !== null && value !== '') {
+      if (typeof value === 'string') {
+        var gvizDate = parseGVizDateString(value);
+        if (gvizDate) {
+          return gvizDate;
+        }
+      }
+      return value;
+    }
+    if (cell.f) {
+      var formattedDate = parseGVizDateString(cell.f);
+      return formattedDate || cell.f;
+    }
+    return '';
   }
 
   function parseSheetResponse(raw) {
@@ -165,7 +242,7 @@
           var entry = {};
           row.c.forEach(function (cell, idx) {
             var key = cols[idx];
-            entry[key] = cell && cell.v ? cell.v : '';
+            entry[key] = normalizeCellValue(cell);
           });
           return normalizeRow(entry);
         })

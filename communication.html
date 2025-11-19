@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Moatti Lab | Protocol Library</title>
+		<title>Moatti Lab | Communication Library</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="description" content="Interactive protocol index for the Moatti Lab" />
-		<meta name="keywords" content="Moatti Lab, protocols, pigs" />
+		<meta name="description" content="Communication resources curated for Moatti Lab researchers" />
+		<meta name="keywords" content="Moatti Lab, communication, presentations, grants" />
 		<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:700italic,400,300,700' rel='stylesheet' type='text/css'>
 		<link rel="icon" type="image/jpeg" href="images/lab-logo.jpeg">
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
@@ -13,13 +13,49 @@
 		<script src="js/skel-panels.min.js"></script>
 		<script src="js/init.js"></script>
 		<script>
-			window.PROTOCOL_SHEET = {
-				sheetId: '1OfZPbsPn-t1ugxQ8M39vO676pUPV-25SFXd6Ztz2RFg',
-				gid: '0',
-				sheetName: 'Sheet1'
+			window.COMMUNICATION_SHEET = {
+				sheetId: '1UhXUtTgSbsptv6beh0Hm_FgCAI6ahXDAZP-AO7pAB5Q',
+				categories: [
+					{
+						title: 'Presentation Skills',
+						gid: '0',
+						description: 'Slide decks, visual polish, and best practices for telling the lab story with clarity.',
+						accent: 'var(--pig-rose)'
+					},
+					{
+						title: 'Public Speaking & Delivery',
+						gid: '734882027',
+						description: 'Voice, pacing, and on-stage confidence for seminars, defenses, and demos.',
+						accent: 'var(--pig-burgundy)'
+					},
+					{
+						title: 'Scientific Storytelling',
+						gid: '1721722821',
+						description: 'Narrative structure tips for weaving data, context, and impact into a memorable arc.',
+						accent: '#6b90c9'
+					},
+					{
+						title: 'Writing: Papers, Abstracts, Figures',
+						gid: '451640976',
+						description: 'Guides for drafting manuscripts, tightening prose, and building clean figure legends.',
+						accent: '#c6935d'
+					},
+					{
+						title: 'Grant Writing & Fellowship Applications',
+						gid: '1210054380',
+						description: 'Strategies for budgets, aims pages, reviewer empathy, and successful submissions.',
+						accent: '#7a6bb4'
+					},
+					{
+						title: 'Templates & Tools',
+						gid: '1373465217',
+						description: 'Downloadable outlines, planning docs, and quick-start checklists for lab comms.',
+						accent: '#3f7f8c'
+					}
+				]
 			};
 		</script>
-		<script src="js/protocols.js" defer></script>
+		<script src="js/communication.js" defer></script>
 		<noscript>
 			<link rel="stylesheet" href="css/skel-noscript.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -28,7 +64,7 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
 	</head>
-	<body class="no-sidebar">
+	<body class="no-sidebar communication-page">
 
 	<!-- Header -->
 		<div id="header">
@@ -44,8 +80,8 @@
 				<nav id="nav">
 					<ul>
 						<li><a href="index.html">Home</a></li>
-						<li class="active"><a href="protocols.html">Protocols</a></li>
-						<li><a href="communication.html">Communication</a></li>
+						<li><a href="protocols.html">Protocols</a></li>
+						<li class="active"><a href="communication.html">Communication</a></li>
 						<li><a href="background.html">Background</a></li>
 					</ul>
 				</nav>
@@ -54,11 +90,11 @@
 	<!-- /Header -->
 
 	<!-- Banner -->
-		<div id="banner" class="page-banner protocols-banner">
+		<div id="banner" class="page-banner communication-banner">
 			<div class="container">
 				<div class="banner-content simple">
-					<h1>Protocol Library</h1>
-					<p>Search SOPs, assays, and instrumentation guides (<a class="protocols-cta-link" href="https://docs.google.com/spreadsheets/d/1OfZPbsPn-t1ugxQ8M39vO676pUPV-25SFXd6Ztz2RFg/edit?usp=sharing" target="_blank" rel="noopener">add or update SOPs</a>)</p>
+					<h1>Communication Playbook</h1>
+					<p>Links, templates, and prompts to help the lab talk about our science with polish and confidence.</p>
 				</div>
 			</div>
 		</div>
@@ -67,14 +103,10 @@
 	<!-- Main -->
 		<div id="page">
 			<div id="main" class="container">
-				<section class="protocol-search">
-					<input type="search" id="protocol-search" placeholder="Search protocols" aria-label="Search protocols">
-				</section>
+				<div id="communication-sections" class="communication-sections"></div>
 
-				<div id="protocol-grid" class="protocol-grid"></div>
-
-				<div class="protocol-empty-state">
-					<p>No protocols match that search yet. Let ops know so we can add it.</p>
+				<div class="communication-empty-state">
+					<p>No communication resources are available yet. Add links to the spreadsheet and this page will update automatically.</p>
 				</div>
 			</div>
 		</div>
