@@ -1583,6 +1583,14 @@
 	.background-dynamic-content section
 	{
 		margin-bottom: 3em;
+		scroll-margin-top: 160px;
+	}
+
+	.background-dynamic-content h3
+	{
+		scroll-margin-top: 160px;
+		font-size: 1.5em;
+		margin-top: 1.8em;
 	}
 
 	.background-dynamic-content img
@@ -1601,6 +1609,23 @@
 		border: 1px dashed rgba(90,42,60,0.3);
 		border-radius: 12px;
 		color: var(--pig-muted);
+	}
+
+	.background-page #page
+	{
+		padding-top: 1em;
+	}
+
+	.background-page #main
+	{
+		margin-top: 1.5em;
+		padding-top: 1.5em;
+	}
+
+	.background-dynamic-content p
+	{
+		font-size: 1.05em;
+		line-height: 1.85em;
 	}
 
 /*********************************************************************************/
@@ -1629,28 +1654,48 @@
 	{
 		position: -webkit-sticky;
 		position: sticky;
-		top: 6em;
+		top: 2em;
+		max-height: calc(100vh - 6em);
+		overflow-y: auto;
+		padding-right: 0.3em;
 	}
 
 		.background-nav .sidebar
 		{
 			margin-bottom: 1.2em;
-			padding: 1em 1.1em;
+			padding: 0.75em 0.9em;
 			border-radius: 10px;
 			background: var(--pig-shell);
 			box-shadow: none;
 			border: none;
 		}
 
+	.anchor-list
+	{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
 	.anchor-list li
 	{
-		margin-bottom: 0.4em;
+		margin-bottom: 0.05em;
+		line-height: 1.1;
 	}
+
+		.anchor-list li a
+		{
+			font-size: 1em;
+			line-height: 1.3em;
+			display: block;
+			padding: 0.15em 0;
+		}
 
 		.anchor-list li.subnav
 		{
-			padding-left: 1.2em;
-			font-size: 0.95em;
+			padding-left: 0.9em;
+			font-size: 0.92em;
+			line-height: 1.25;
 		}
 	.social-list
 	{
