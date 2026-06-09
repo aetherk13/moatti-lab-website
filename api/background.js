@@ -286,7 +286,7 @@ module.exports = async (req, res) => {
     const sections = buildSections(doc.body && doc.body.content, inlineImages);
 
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate');
+    res.setHeader('Cache-Control', 's-maxage=1800, stale-while-revalidate=86400');
     res.status(200).json({
       docId,
       sections
